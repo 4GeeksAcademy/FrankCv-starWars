@@ -1,3 +1,4 @@
-/* 
-    General Styles
-*/
+.btn-colored:hover{
+    background-color:#ae1d13;
+    opacity:0.5;
+}

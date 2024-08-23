@@ -15,23 +15,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			people: [],
 			planets: [],
-			vehicles: []
+			vehicles: [],
+			likeList: [],
+			helper: []
+
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			getPeople: () => {
-				const URL = `https://www.swapi.tech/api/people`;
-				fetch(URL, { method: "GET" })
-					.then((response) => {
-						if (response.status === 200) {
-							return response.json()
-						}
-					})
-					.then((data) => {
-						console.log(data.results)
-						setStore({ people: data.results });
-					})
-					.catch((error) => console.log(error))
+			getPeople: async () => {
+				try {
+					const response = await fetch(`https://www.swapi.tech/api/people`)
+					if (response.status === 200) {
+						const data = await response.json()
+						setStore({ ...getStore(), people: data.results })
+					}
+				} catch {
+					(e => console.error(e))
+				}
+				// const URL = `https://www.swapi.tech/api/people`;
+				// fetch(URL, { method: "GET" })
+				// 	.then((response) => {
+				// 		if (response.status === 200) {
+				// 			return response.json()
+				// 		}
+				// 	})
+				// 	.then((data) => {
+				// 		console.log(data.results)
+				// 		setStore({ people: data.results });
+				// 	})
+				// 	.catch((error) => console.log(error))
 			},
 			getPlanets: () => {
 				const URL = `https://www.swapi.tech/api/planets`;
@@ -60,6 +72,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				} catch {
 					((error) => console(error))
+				}
+			},
+			setLikeList: (name, id) => {
+				setStore({ ...getStore(), likeList: [...getStore().likeList, { name: name, id: id, like: true }] })
+				console.log(getStore().likeList)
+			},
+			filterLikeList: (id, name) => {
+				setStore({ ...getStore(), likeList: getStore().likeList.filter((e) => e.id !== id && e.name !== name) })
+				console.log(getStore().likeList)
+			},
+			getData: async (type, id) => {
+				if (type === 'characters') type = 'people';
+				console.log(type, id)
+				const url = `https://www.swapi.tech/api/${type}/${id}`
+				try {
+					const response = await fetch(url)
+					console.log(response)
+					// if (response === 200) {
+					const data = await response.json()
+					console.log(url)
+					console.log(data.result)
+					setStore({ helper: data.result })
+					return
+					// }
+				} catch {
+					(e => console.error(e))
 				}
 			},
 			exampleFunction: () => {

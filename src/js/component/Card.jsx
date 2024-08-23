@@ -1,19 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect, useRef, } from "react";
+import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom"
 export const Card = (props) => {
+    const { store, actions } = useContext(Context);
+    const navigate = useNavigate();
     const [like, setLike] = useState(false);
-    const onHeartHandler = () => {
-        setLike(!like);
-        console.log(like);
+    const id = props.charId;
+    const name = props.name;
+
+    // const onLikeHandler = () => {
+    //     setLike(prev => !prev)
+    //     console.log(like)
+    //     if (like === false) {
+    //         actions.setLikeList(name, id)
+    //         console.log(`setted`)
+    //     } else {
+    //         actions.filterLikeList(id)
+    //     }
+    // }
+    const onClickHandler = () => {
+        if (props.type === 'planets') {
+            navigate('./ReadMorePlanets/' + props.type + '/' + props.name + '/' + props.charId)
+        }
+        else {
+
+            navigate('./ReadMore/' + props.type + '/' + props.name + '/' + props.charId)
+        }
+    }
+    const onLikeHandler = () => {
+        setLike(prev => !prev)
+        console.log(like)
+        if (like === false) {
+            actions.setLikeList(name, id)
+            console.log(`setted`)
+        } else {
+            actions.filterLikeList(id)
+        }
     }
     return (
-        <div className="container border border-secondary p-0 mx-3" style={{ display: 'inline-block', float: 'none', minWidth: '15vw', minHeight: '200px', maxHeight: '80vh', maxWidth: '300px' }}>
+        <div className="container border border-secondary p-0 ms-1 me-3" style={{ display: 'inline-block', float: 'none', minWidth: '15vw', minHeight: '500px', maxHeight: '80vh', maxWidth: '300px' }}>
             <div className="container p-0">
-                <img style={{ width: '300px', height: `400px` }} src={props.apiImg} className="card-img-top m-0 p-0 img-fluid" alt= "not found"/>
+                <img src={props.apiImg} className="m-0 p-0 img-fluid" alt="not found" />
                 <div className="card-body">
                     <h5 className="card-title">{props.name}</h5>
                     <div className="container d-flex justify-content-between">
-                        <button className="btn btn-primary" onClick={props.onClickHandler}>Learn More</button>
-                        <button className="btn btn-outline-warning" onClick={() => onHeartHandler()}>{like ? <i className="fa-solid fa-heart text-warning"></i> : <i className="fa-regular fa-heart"></i>}</button>
+                        <button className="btn btn-primary btn-colored" style={{ backgroundColor: '#d22013', borderColor: 'white' }} onClick={() => onClickHandler()}>Learn More</button>
+                        <button className="btn btn-outline-warning" onClick={() => onLikeHandler()}>
+                            {
+                                store.likeList.filter(e => e.name === name && e.id === id).length === 0
+                                    ? <i className="fa-regular fa-heart"></i>
+                                    : <i className="fa-solid fa-heart text-warning"></i>
+                            }
+                        </button>
                     </div>
                 </div>
             </div>

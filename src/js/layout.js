@@ -7,6 +7,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { ReadMore } from "./views/ReadMore.jsx";
+import { ReadMorePlanets } from "./views/ReadMorePlanets.jsx";
 
 //create your first component
 const Layout = () => {
@@ -22,7 +23,7 @@ const Layout = () => {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/home" element={<Home />} />
-						<Route path="/readMore/:id" element={<ReadMore/>} />
+						<Route path="/ReadMore/:type/:name/:id" element={<ReadMore />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 				</ScrollToTop>

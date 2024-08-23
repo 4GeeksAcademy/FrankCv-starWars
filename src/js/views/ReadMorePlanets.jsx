@@ -7,7 +7,7 @@ export const ReadMore = () => {
     useEffect(() => {
         actions.getData(params.type, params.id);
     }, [])
-    const url = `https://starwars-visualguide.com/assets/img/${params.type}}/${params.id}.jpg`;
+    const url = `https://starwars-visualguide.com/assets/img/planets/${params.id}.jpg`;
     console.log(store.helper.properties)
     return (
         <div>
@@ -25,19 +25,19 @@ export const ReadMore = () => {
                             <div className="container">
                                 <div className="row p-3 align-items-start text-danger fw-bold m-0 pb-0 text-light">
                                     <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>Name <br /></div>
-                                    <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>Birth <br />Year</div>
-                                    <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>Gender</div>
-                                    <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>Height</div>
-                                    <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>Skin <br /> Color</div>
-                                    <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>Eye<br />Color</div>
+                                    <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>Rotation <br />Period</div>
+                                    <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>Gravity</div>
+                                    <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>Climate</div>
+                                    <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>Created</div>
+                                    <div className="col-2 border-end border-danger" style={{ minHeight: '60px', height: "5vh" }}>population</div>
                                 </div>
                                 <div className="row p-3 text-danger m-0 pt-0 text-light">
                                     <div className="col-2 border-end border-danger">{store?.helper?.properties?.name}</div>
-                                    <div className="col-2 border-end border-danger">{store?.helper?.properties?.birth_year}</div>
-                                    <div className="col-2 border-end border-danger">{store?.helper?.properties?.gender}<br /></div>
-                                    <div className="col-2 border-end border-danger">{store?.helper?.properties?.height}</div>
-                                    <div className="col-2 border-end border-danger">{store?.helper?.properties?.skin_color}<br /></div>
-                                    <div className="col-2 border-end border-danger">{store?.helper?.properties?.eye_color}<br /></div>
+                                    <div className="col-2 border-end border-danger">{store?.helper?.properties?.rotation_period}</div>
+                                    <div className="col-2 border-end border-danger">{store?.helper?.properties?.gravity}</div>
+                                    <div className="col-2 border-end border-danger">{store?.helper?.properties?.climate}</div>
+                                    <div className="col-2 border-end border-danger">{store?.helper?.properties?.created}<br /></div>
+                                    <div className="col-2 border-end border-danger">{store?.helper?.properties?.population}<br /></div>
                                 </div>
                             </div>
                         </div>
