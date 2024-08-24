@@ -1,13 +1,16 @@
 import React, { useContext, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { Context } from "../store/appContext.js";
-export const ReadMore = () => {
+import tatooine from "../../img/Tatooine-TCW.webp"
+export const ReadMorePlanets = () => {
     const params = useParams();
     const { store, actions } = useContext(Context);
     useEffect(() => {
-        actions.getData(params.type, params.id);
+        actions.getData(params.typep, params.idp);
     }, [])
-    const url = `https://starwars-visualguide.com/assets/img/planets/${params.id}.jpg`;
+    console.log(store.helper)
+
+    const url = `https://starwars-visualguide.com/assets/img/planets/${params.idp}.jpg`;
     console.log(store.helper.properties)
     return (
         <div>
@@ -16,7 +19,7 @@ export const ReadMore = () => {
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <div className="container d-flex border-bottom border-danger px-0 mb-4 pb-4 text-light">
-                                <img src={url} className="d-block w-100" alt="not found" style={{ minWidth: '200px', minHeight: '400px', maxWidth: '20vw', height: '50vh' }} />
+                                <img src={parseInt(params.idp) === parseInt(1) ? tatooine : url} className="d-block w-100" alt="not found" style={{ minWidth: '200px', minHeight: '400px', maxWidth: '20vw', height: '50vh' }} />
                                 <div className="container">
                                     <h2>{store?.helper?.properties?.name}</h2>
                                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse cumque, illo animi odio consequuntur reiciendis obcaecati officia natus dolor. Molestiae error dolores magnam nisi a ab mollitia nulla quasi veniam.</p>

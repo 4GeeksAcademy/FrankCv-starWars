@@ -7,7 +7,7 @@ export const ReadMore = () => {
     useEffect(() => {
         actions.getData(params.type, params.id);
     }, [])
-    const url = `https://starwars-visualguide.com/assets/img/${params.type}}/${params.id}.jpg`;
+    const url = `https://starwars-visualguide.com/assets/img/${params.type}/${params.id}.jpg`;
     console.log(store.helper.properties)
     return (
         <div>
@@ -19,7 +19,10 @@ export const ReadMore = () => {
                                 <img src={url} className="d-block w-100" alt="not found" style={{ minWidth: '200px', minHeight: '400px', maxWidth: '20vw', height: '50vh' }} />
                                 <div className="container">
                                     <h2>{store?.helper?.properties?.name}</h2>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse cumque, illo animi odio consequuntur reiciendis obcaecati officia natus dolor. Molestiae error dolores magnam nisi a ab mollitia nulla quasi veniam.</p>
+                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse cumque, illo animi odio consequuntur reiciendis obcaecati officia natus dolor. Molestiae error dolores magnam nisi a ab mollitia nulla quasi veniam.
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quaerat rerum tenetur laborum quidem facere alias, quo earum a veniam molestias, dolore consequatur ducimus laboriosam cupiditate, aut cum? Ipsam, minima!
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ipsa voluptate iste ratione sit, quasi vitae labore doloribus porro eligendi modi necessitatibus possimus suscipit blanditiis, obcaecati libero, soluta dignissimos non!
+                                    </p>
                                 </div>
                             </div>
                             <div className="container">
