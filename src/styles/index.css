@@ -2,3 +2,8 @@
     background-color:#ae1d13;
     opacity:0.5;
 }
+/* https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif */
+body{
+    background-image: url('https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif ');
+    z-index: 3;
+}
