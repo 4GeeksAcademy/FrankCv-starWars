@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Card } from "../component/Card.jsx";
 import { CardPlanet } from "../component/CardPlanet.jsx"
+import { CardVehicle } from "./CardVehicle.jsx";
 
 export const ScrollCards = () => {
     const { store, actions } = useContext(Context)
@@ -14,7 +15,7 @@ export const ScrollCards = () => {
         actions.getVehicles();
     }, [])
 
-
+    console.log(store?.vehicles)
     return (
         <div>
             <h2 className="fs-2 text-start p-3" style={{ color: '#FFCE30' }}>CHARACTERS</h2>
@@ -37,7 +38,7 @@ export const ScrollCards = () => {
             <div className="container shadow-large" style={{ overflowX: 'auto', whiteSpace: 'nowrap', minHeight: '57vh', color: '#FFCE30' }} >
                 {
                     store.vehicles.map((e, index) =>
-                        <Card key={index} apiImg={baseSrcImg + "characters/" + e.uid + ".jpg"} name={e.name} charId={e.uid} type={'characters'} />
+                        <CardVehicle key={index} apiImg={baseSrcImg + "vehicles/" + e.uid + ".jpg"} name={e.name} charId={e.uid} type={'vehicles'} />
                     )
                 }
             </div>

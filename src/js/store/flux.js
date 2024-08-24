@@ -62,12 +62,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch((error) => console.log(error))
 			},
-			getVehicles: () => {
+			getVehicles: async () => {
 				const URL = `https://www.swapi.tech/api/vehicles`;
 				try {
-					const response = fetch(URL, { method: "GET" })
+					const response = await fetch(URL, { method: "GET" })
 					if (response.status === 200) {
-						const data = response.json()
+						console.log(response.status)
+						const data = await response.json()
 						setStore({ ...getStore(), vehicles: data.results });
 					}
 				} catch {
