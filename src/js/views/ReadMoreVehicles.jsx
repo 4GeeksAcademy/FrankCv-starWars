@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { Context } from "../store/appContext.js";
+import veh from "../../img/veh.jpg"
 export const ReadMoreVehicles = () => {
     const params = useParams();
     const { store, actions } = useContext(Context);
@@ -19,7 +20,7 @@ export const ReadMoreVehicles = () => {
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <div className="container d-flex border-bottom border-danger px-0 mb-4 pb-4 text-light">
-                                <img src={url} className="d-block w-100" alt="not found" style={{ minWidth: '200px', minHeight: '400px', maxWidth: '20vw', height: '50vh' }} />
+                                <img src={params.idv === '8' ? veh : url} className="d-block w-100" alt="not found" style={{ minWidth: '200px', minHeight: '400px', maxWidth: '20vw', height: '50vh' }} />
                                 <div className="container">
                                     <h2>{store?.helper?.properties?.name}</h2>
                                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse cumque, illo animi odio consequuntur reiciendis obcaecati officia natus dolor. Molestiae error dolores magnam nisi a ab mollitia nulla quasi veniam.</p>

@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import star from "../../img/starwarslogo.png"
-import rigo from "../../img/rigo-baby.jpg"
+import logo from "../../img/logo.png"
 import starwars from "../../img/STAR-WARS.jpg"
 
 export const Navbar = () => {
@@ -14,7 +13,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-light mb-3 px-5" style={{ backgroundColor: '' }}>
 			<Link to="/">
-				<img style={{ width: "10vw", minWidth: "100px" }} src={starwars} className="rounded float-start ms-5 ps-5" alt="..." />
+				<img style={{ width: "10vw", minWidth: "100px" }} src={logo} className="rounded float-start ms-5 ps-5" alt="..." />
 			</Link>
 			<div className="ml-auto me-5 pe-5">
 				<div className="dropdown">
